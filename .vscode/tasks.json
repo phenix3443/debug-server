@@ -20,21 +20,29 @@
         "type": "shell",
         "dependsOn": ["config"],
         "command": "cmake",
-        "args": ["--build", "./build", "--config", "Debug"]
-      },
-      {
-        "label": "start",
-        "type": "shell",
-        "dependsOn": ["build"],
-        "command": "${workspaceFolder}/build/rpc_server",
+        "args": ["--build", "./build", "--config", "Debug"],
         "problemMatcher": []
       },
       {
-        "label": "start network",
+        "label": "start server",
+        "type": "shell",
+        "dependsOn": ["build"],
+        "command": "${workspaceFolder}/build/rpc_server"
+      },
+      {
+        "label": "start server network",
         "type": "shell",
         "dependsOn": ["build"],
         "command": "${workspaceFolder}/build/rpc_server",
-        "args": ["--network"]
+        "args": ["--network"],
+        "problemMatcher": []
+      },
+      {
+        "label": "start client",
+        "type": "shell",
+        "dependsOn": ["build"],
+        "command": "${workspaceFolder}/build/rpc_client",
+        "problemMatcher": []
       }
     ]
 }
